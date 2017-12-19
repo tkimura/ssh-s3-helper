@@ -34,7 +34,7 @@ Configure
 s3_bucket=your_s3_bucket
 s3_region=ap-northeast-1
 s3_prefix=ssh
-aws=/path/to/aws
+awscmd=/path/to/aws
 ~~~
 
 * s3_bucket
@@ -43,7 +43,7 @@ aws=/path/to/aws
     * Region of AWS S3 bucket
 * s3_prefix
     * Key prefix of user's public keys
-* aws
+* awscmd
     * Path of aws command
 
 Requirements
