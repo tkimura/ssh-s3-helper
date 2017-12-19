@@ -13,8 +13,6 @@ if [ -z "$user" ]; then
 	exit 1
 fi
 
-user_home=`awk -v u=$user -F':' '$1 ~ u {print $6}' < /etc/passwd`
-
 aws_opts="--region $s3_region"
 aws="$awscmd $aws_opts"
 
