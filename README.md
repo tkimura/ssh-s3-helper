@@ -48,6 +48,16 @@ awscmd=/path/to/aws
 * awscmd
     * Path of aws command
 
+Upload user's public keys
+----
+
+**Example of S3 URL**
+
+~~~
+s3://YOUR_S3_BUCKET/ssh/tkimura
+~~~
+
+
 Requirements
 ----
 
