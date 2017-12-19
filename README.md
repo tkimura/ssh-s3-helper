@@ -18,7 +18,7 @@ How to use ?
 
 * Configure this script by /etc/default/ssh-s3-helper.
 
-* Specifies to AuthorizedKeysCommand in sshd_config.
+* Specifies to AuthorizedKeysCommand in /etc/ssh/sshd_config.
 
     ~~~
     AuthorizedKeysCommand /usr/local/bin/ssh-s3-helper.sh %u
@@ -29,6 +29,8 @@ How to use ?
 
 Configure
 ----
+
+**/etc/default/ssh-s3-helper**
 
 ~~~
 s3_bucket=your_s3_bucket
@@ -76,4 +78,6 @@ IAM Policy for AWS S3
     ]
 }
 ~~~
+
+* Replace "your_s3_bucket" to your s3 bucket name.
 
