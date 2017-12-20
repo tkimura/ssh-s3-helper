@@ -12,6 +12,8 @@ How to use ?
 
 * Create your AWS S3 bucket.
 
+* Enable static website hosting.
+
 * Upload user's public keys to AWS S3 bucket.
 
 * Deploy this script to your servers.
@@ -36,7 +38,6 @@ Configure
 s3_bucket=your_s3_bucket
 s3_region=ap-northeast-1
 s3_prefix=ssh
-awscmd=/path/to/aws
 ~~~
 
 * s3_bucket
@@ -45,8 +46,6 @@ awscmd=/path/to/aws
     * Region of AWS S3 bucket
 * s3_prefix
     * Key prefix of user's public keys
-* awscmd
-    * Path of aws command
 
 Upload user's public keys
 ----
@@ -58,36 +57,31 @@ s3://YOUR_S3_BUCKET/ssh/tkimura
 ~~~
 
 
-Requirements
-----
-
-* [aws](https://github.com/aws/aws-cli)
-    * ex) `sudo apt-get install awscli`
-* [jq](https://github.com/stedolan/jq)
-    * ex) `sudo apt-get install jq`
-
-IAM Policy for AWS S3
+S3 Bucket Policy
 ----
 
 ~~~
 {
     "Version": "2012-10-17",
+    "Id": "Policy1513788471347",
     "Statement": [
         {
-            "Sid": "VisualEditor0",
+            "Sid": "Stmt1513788469343",
             "Effect": "Allow",
+            "Principal": "*",
             "Action": "s3:GetObject",
-            "Resource": "arn:aws:s3:::your_s3_bucket/*"
-        },
-        {
-            "Sid": "VisualEditor2",
-            "Effect": "Allow",
-            "Action": "s3:ListBucket",
-            "Resource": "arn:aws:s3:::your_s3_bucket"
+            "Resource": "arn:aws:s3:::your_s3_bucket/*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:sourceVpc": "your_vpc_id"
+                }
+            }
         }
     ]
 }
 ~~~
 
-* Replace "your_s3_bucket" to your s3 bucket name.
+* Replace "your_s3_bucket"
+* Replace "your_vpc_id" 
+
 

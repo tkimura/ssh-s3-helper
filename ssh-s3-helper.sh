@@ -3,7 +3,6 @@
 s3_bucket=your_s3_bucket
 s3_region=ap-northeast-1
 s3_prefix=ssh
-awscmd=/path/to/aws
 
 [ -f /etc/default/ssh-s3-helper ] && . /etc/default/ssh-s3-helper
 
@@ -13,14 +12,8 @@ if [ -z "$user" ]; then
 	exit 1
 fi
 
-aws_opts="--region $s3_region"
-aws="$awscmd $aws_opts"
+sshkey_url="https://s3-${s3_region}.amazonaws.com/${s3_bucket}/${s3_prefix}/${user}"
 
-s3_key=`$aws s3api list-objects --bucket $s3_bucket --prefix $s3_prefix | jq -r ".Contents[] | select(.Key==\"${s3_prefix}/${user}\")|.Key"`
-
-if [ -n "$s3_key" ]; then
-	sshkey=`$aws s3api get-object --bucket $s3_bucket --key $s3_key /dev/stdout 2> /dev/null | grep '^ssh'`
-	echo "$sshkey"
-fi
+curl -s $sshkey_url
 
 exit 0
