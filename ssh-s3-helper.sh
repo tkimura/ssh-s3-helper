@@ -12,7 +12,7 @@ if [ -z "$user" ]; then
 	exit 1
 fi
 
-if ! echo "$user" | egrep -q '^[a-z_][a-z0-9_-]*{0,31}$'; then
+if ! echo "$user" | egrep -q '^[a-z_][a-z0-9_-]{0,31}$'; then
 	exit 1
 fi
 
