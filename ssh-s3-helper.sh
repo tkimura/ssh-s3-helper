@@ -14,6 +14,12 @@ fi
 
 sshkey_url="https://s3-${s3_region}.amazonaws.com/${s3_bucket}/${s3_prefix}${user}"
 
-curl -s $sshkey_url
+if which _curl > /dev/null; then
+    curl -s $sshkey_url | grep '^ssh'
+elif which wget > /dev/null; then
+    wget -q -O - $sshkey_url | grep '^ssh'
+else
+    exit 1
+fi
 
 exit 0
