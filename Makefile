@@ -19,6 +19,7 @@ endif
 
 clean:
 	rm -f ssh-s3-helper
+	rm -rf $(GOPATH)
 
 install:
 	install -m 555 -o root -g root ./ssh-s3-helper $(DEST)
