@@ -7,6 +7,7 @@ import (
 	"github.com/zieckey/goini"
 	"os"
 	"regexp"
+	"fmt"
 )
 
 
@@ -44,6 +45,6 @@ func main() {
 		if err != nil {
 			log.Fatal(err)
 		}
-		print(string(body))
+		fmt.Print(string(body))
 	}
 }
