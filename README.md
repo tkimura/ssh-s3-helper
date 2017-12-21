@@ -35,15 +35,15 @@ Configure
 **/etc/default/ssh-s3-helper**
 
 ~~~
-s3_bucket=your_s3_bucket
 s3_region=ap-northeast-1
-s3_prefix=ssh
+s3_bucket=your_s3_bucket
+s3_prefix=ssh/
 ~~~
 
-* s3_bucket
-    * Name of AWS S3 bucket
 * s3_region
     * Region of AWS S3 bucket
+* s3_bucket
+    * Name of AWS S3 bucket
 * s3_prefix
     * Key prefix of user's public keys
 
