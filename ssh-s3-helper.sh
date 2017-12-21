@@ -12,9 +12,13 @@ if [ -z "$user" ]; then
 	exit 1
 fi
 
+if ! echo "$user" | egrep -q '^[a-z_][a-z0-9_-]*{0,31}$'; then
+	exit 1
+fi
+
 sshkey_url="https://s3-${s3_region}.amazonaws.com/${s3_bucket}/${s3_prefix}${user}"
 
-if which _curl > /dev/null; then
+if which curl > /dev/null; then
     curl -s $sshkey_url | grep '^ssh'
 elif which wget > /dev/null; then
     wget -q -O - $sshkey_url | grep '^ssh'
