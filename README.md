@@ -23,11 +23,24 @@ How to use ?
 * Specifies to AuthorizedKeysCommand in /etc/ssh/sshd_config.
 
     ~~~
-    AuthorizedKeysCommand /usr/local/bin/ssh-s3-helper.sh %u
+    AuthorizedKeysCommand /usr/local/bin/ssh-s3-helper %u
     AuthorizedKeysCommandUser nobody
     ~~~
 
     * AuthorizedKeysCommandUser is required. (man sshd_config)
+
+Install
+---
+
+~~~
+git clone git@github.com:tkimura/ssh-s3-helper.git
+cd ssh-s3-helper
+make
+sudo make install
+~~~
+
+* If you have "go", install golang version.
+* If you have't "go", install shell version.
 
 Configure
 ----
