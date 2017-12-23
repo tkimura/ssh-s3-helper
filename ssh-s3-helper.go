@@ -1,4 +1,4 @@
-# vim: set syntax=go ff=unix fileencoding=utf-8 expandtab ts=4 sw=4:
+/* vim: set syntax=go ff=unix fileencoding=utf-8 expandtab ts=4 sw=4: */
 
 package main
 
