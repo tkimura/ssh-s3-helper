@@ -40,7 +40,7 @@ sudo make install
 ~~~
 
 * If you have "go", install golang version.
-* If you have't "go", install shell version.
+* If you haven't "go", install shell version.
 
 Configure
 ----
