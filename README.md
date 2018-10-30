@@ -12,8 +12,6 @@ How to use ?
 
 * Create your AWS S3 bucket.
 
-* Enable static website hosting.
-
 * Upload user's public keys to AWS S3 bucket.
 
 * Deploy this script to your servers.
